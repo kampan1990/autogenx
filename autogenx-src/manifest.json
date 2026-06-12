@@ -1,0 +1,145 @@
+{
+  "manifest_version": 3,
+  "name": "AutoGenX v2.3.4 Release",
+  "version": "2.3.4",
+  "description": "สร้างภาพและคลิปโฆษณาแนะนำสินค้าอัตโนมัติด้วย AI",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "sidePanel",
+    "tabs",
+    "windows",
+    "activeTab",
+    "storage",
+    "unlimitedStorage",
+    "browsingData",
+    "downloads",
+    "cookies",
+    "scripting",
+    "alarms",
+    "debugger",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://www.autogention.com/*",
+    "https://www.tiktok.com/*",
+    "https://shop.tiktok.com/*",
+    "https://affiliate-th.tiktok.com/*",
+    "https://seller-th.tiktok.com/*",
+    "https://seller.tiktok.com/*",
+    "https://labs.google.com/*",
+    "https://labs.google/*",
+    "https://aitestkitchen.withgoogle.com/*",
+    "https://api.openai.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.kie.ai/*",
+    "https://*.googleapis.com/*",
+    "https://open-api.affiliate.shopee.co.th/*",
+    "https://*.shopee.co.th/*",
+    "https://*.susercontent.com/*",
+    "https://cf.shopee.co.th/*",
+    "https://graph.facebook.com/*",
+    "https://graph-video.facebook.com/*",
+    "https://*.facebook.com/*",
+    "http://127.0.0.1:41789/*"
+  ],
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "src/panel/index.html"
+  },
+  "action": {
+    "default_title": "AutoGenX"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/flow-content.ts-loader-DN5ZJ3HY.js"
+      ],
+      "matches": [
+        "https://labs.google.com/*",
+        "https://labs.google/*",
+        "https://aitestkitchen.withgoogle.com/*",
+        "https://accounts.google.com/*"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    },
+    {
+      "js": [
+        "assets/tiktok-post.ts-loader-DSvZTmNM.js"
+      ],
+      "matches": [
+        "https://www.tiktok.com/tiktokstudio/*"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "js": [
+        "assets/tiktok-comment.ts-loader-CCiFpmrI.js"
+      ],
+      "matches": [
+        "https://www.tiktok.com/*"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "js": [
+        "assets/tiktok-shop.ts-loader-CD730Xdn.js"
+      ],
+      "matches": [
+        "https://www.tiktok.com/tiktokstudio/*"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "src/content/tiktok/tiktok-injected.ts",
+        "icons/*",
+        "images/*",
+        "fonts/*"
+      ],
+      "use_dynamic_url": false
+    },
+    {
+      "matches": [
+        "https://accounts.google.com/*",
+        "https://aitestkitchen.withgoogle.com/*",
+        "https://labs.google.com/*",
+        "https://labs.google/*"
+      ],
+      "resources": [
+        "assets/logger-CbU0UFxz.js",
+        "assets/pipeline-log-C2ZJNMjJ.js",
+        "assets/urls-DiE2CpbD.js",
+        "assets/pipeline-overlay-2NgNscin.js",
+        "assets/flow-content.ts-B353YEy8.js"
+      ],
+      "use_dynamic_url": false
+    },
+    {
+      "matches": [
+        "https://www.tiktok.com/*"
+      ],
+      "resources": [
+        "assets/logger-CbU0UFxz.js",
+        "assets/pipeline-log-C2ZJNMjJ.js",
+        "assets/pipeline-overlay-2NgNscin.js",
+        "assets/tiktok-post.ts-RSH0Ix5Y.js",
+        "assets/tiktok-comment.ts-B7JLEVV2.js",
+        "assets/tiktok-shop.ts-B7eLkEmp.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}
